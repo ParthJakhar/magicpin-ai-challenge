@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: vera-ai-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn bot:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /v1/healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: TEAM_NAME
+        value: Vera Reborn
+      - key: TEAM_MEMBERS
+        value: Parth Jakhar
+      - key: CONTACT_EMAIL
+        value: jakharparth12@gmail.com
